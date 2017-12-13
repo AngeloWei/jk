@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zw.jk.dao.FactoryDao">
+    <select id="get" resultType="Factory" >
+        SELECT * FROM factory_info WHERE  Factory_ID=#{id}
+    </select>
+
+    <select id="find" resultType="Factory" parameterType="map" >
+        SELECT  * from factory_info where 1=1  <if test="state!=null" > AND state = #{state},</if>
+
+    </select>
+    <insert id="insert" >
+        INSERT INTO factory_info(Full_Name,Factory_Name,Contacts,Phone,Mobile,Fax,Cnote,Inspector,Order_No,Create_Name,Create_Dept,Create_Time,state)
+                VALUE (#{fullName},#{factoryName},#{contacts},#{phone},#{mobile},#{fax},#{cnote},#{inspector},#{orderNo},#{createName},#{createDept},#{createTime},#{state})
+       </insert>
+    
+    <delete id="deleteById"  parameterType="String">
+        DELETE FROM  factory_info where Factory_ID=#{id}
+    </delete>
+
+    <delete id="delete" parameterType="String">
+        DELETE from factory_info where Factory_ID IN
+        <foreach collection="array" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="update" >
+        UPDATE factory_info
+        <set>
+            <if test="fullName!=null" >Full_Name=#{fullName},</if>
+            <if test="factoryName!=null" >Factory_Name=#{factoryName},</if>
+            <if test="contacts!=null" >Contacts=#{contacts},</if>
+            <if test="phone!=null" >Phone=#{phone},</if>
+            <if test="mobile!=null" >Mobile=#{mobile},</if>
+            <if test="fax!=null" >Fax=#{fax},</if>
+            <if test="cnote!=null" >Cnote=#{cnote},</if>
+            <if test="inspector!=null" >Inspector=#{inspector},</if>
+            <if test="orderNo!=null" >Order_No=#{orderNo},</if>
+        </set>
+        WHERE Factory_ID = #{factoryID}
+    </update>
+    <update id="updateState" parameterType="map">
+        UPDATE factory_info set state=#{state} WHERE  Factory_ID IN
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

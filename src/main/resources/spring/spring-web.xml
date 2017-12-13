@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <!--扫描web包,自动获取注解bean-->
+        <context:component-scan base-package="cn.zw.jk.web"/>
+        <!-- 扫描aop包,获取注解,处理数据检验-->
+
+        <!-- 打开对AspectJ注解的支持-->
+        <aop:aspectj-autoproxy proxy-target-class="true" />
+        <!--扫描exception包-->
+
+
+        <!--自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+        提供一系列:数据绑定,数字和日期的Format,@NumberFormat,@DateTimeFormat,xml,json 默认支持读写-->
+        <mvc:annotation-driven/>
+        <!--使用web servlet 处理静态资源-->
+        <mvc:default-servlet-handler/>
+        <!--配置jsp 显示ViewResolver-->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+            <property name="prefix" value="/WEB-INF/pages/"/>
+            <property name="suffix" value=""/>
+        </bean>
+
+
+</beans>
