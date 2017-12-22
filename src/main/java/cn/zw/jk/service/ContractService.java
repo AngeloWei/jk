@@ -1,6 +1,7 @@
 package cn.zw.jk.service;
 
 import cn.zw.jk.entity.Contract;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;

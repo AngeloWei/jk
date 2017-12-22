@@ -42,7 +42,7 @@
             <if test="state!=null" >STATE =#{state},</if>
             <if test="outState!=null" > OUT_STATE=#{outState},</if>
             <if test="tradeTerms!=null" > TRADE_TERMS=#{tradeTerms},</if>
-            <if test="createTime!=null" > CREATE_TIME=#{createTime},</if>
+            <if test="createTime!=null" > CREATE_TIME=#{createTime}</if>
         </set>
         WHERE CONTRACT_ID=#{contractId}
     </update>
@@ -51,7 +51,7 @@
         DELETE  FROM contract_c where CONTRACT_ID=#{id}
     </delete>
     
-    <delete id="delte" >
+    <delete id="delete" >
         DELETE FROM  contract_c WHERE  CONTRACT_ID IN 
         <foreach collection="array" item="id" separator="," open="(" close=")" >
             #{id}

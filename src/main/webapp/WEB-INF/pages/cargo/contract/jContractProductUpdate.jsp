@@ -13,7 +13,7 @@
 </head>
 <body>
 <form method="post">
-	<input type="text" name="id" value="${obj.id}"/>
+	<input type="text" name="contractProductId" value="${obj.contractProductId}"/>
 	<input type="text" name="contractId" value="${obj.contractId}"/>
 
 <div id="menubar">
@@ -47,7 +47,7 @@
 	            	<select name="factoryId" onchange="setFactoryName(this.options[this.selectedIndex].text);">
 		            	<option value="">--请选择--</option>
 	            		<c:forEach items="${factoryList}" var="f">
-	            			<option value="${f.id}" <c:if test="${obj.factoryId==f.id}">selected</c:if>>${f.factoryName}</option>
+	            			<option value="${f.factoryId}" <c:if test="${obj.factoryId==f.factoryId}">selected</c:if>>${f.factoryName}</option>
 	            		</c:forEach>
 	            	</select>
 	            	<input type="hidden" id="factoryName" name="factoryName" value="${obj.factoryName}"/>

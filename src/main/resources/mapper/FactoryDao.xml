@@ -6,7 +6,7 @@
     </select>
 
     <select id="find" resultType="Factory" parameterType="map" >
-        SELECT  * from factory_info where 1=1  <if test="state!=null" > AND state = #{state},</if>
+        SELECT  * from factory_info where 1=1  <if test="state!=null" > AND state = #{state}</if>
 
     </select>
     <insert id="insert" >

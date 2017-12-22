@@ -63,11 +63,13 @@
 	
 	<c:forEach items="${dataList}" var="o" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
-		<td><input type="checkbox" name="id" value="${o.id}"/></td>
+		<td><input type="checkbox" name="id" value="${o.contractId}"/></td>
 		<td>${status.index+1}</td>
 		<td>${o.customName}</td>
-		<td><a href="toview.action?id=${o.id}">${o.contractNo}</a></td>
-		<td align="center">${o.cpnum}/${o.extnum}</td>
+		<td><a href="toview.action?id=${o.contractId}">${o.contractNo}</a></td>
+
+		<td align="center">0</td>
+
 		<td>${o.inputBy}</td>
 		<td>${o.checkBy}</td>
 		<td>${o.inspector}</td>
@@ -79,7 +81,7 @@
 			<c:if test="${o.state==1}"><font color="green">已上报</font></c:if>
 			<c:if test="${o.state==0}">草稿</c:if>
 		</td>
-		<td><a href="${ctx}/cargo/contractproduct/tocreate.action?contractId=${o.id}" title="新增货物信息">[货物]</a></td>
+		<td><a href="${ctx}/cargo/contractproduct/tocreate.action?contractId=${o.contractId}" title="新增货物信息">[货物]</a></td>
 	</tr>
 	</c:forEach>
 	

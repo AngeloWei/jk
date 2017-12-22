@@ -3,19 +3,22 @@ package cn.zw.jk.service.impl;
 import cn.zw.jk.dao.ContractDao;
 import cn.zw.jk.entity.Contract;
 import cn.zw.jk.service.ContractService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
+@Service
 public class ContractServiceImpl implements ContractService {
     @Resource
     private ContractDao contractDao;
 
     public void insert(Contract contract) {
         contract.setContractId(UUID.randomUUID().toString().substring(3,18));
+        contract.setOldState(1);
+        contract.setState(1);
         contractDao.insert(contract);
     }
 
