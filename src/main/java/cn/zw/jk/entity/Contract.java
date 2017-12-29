@@ -5,6 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class Contract {
+
+    private int productNum ;
+    private int extNum;
     private String contractId;
     private String offeror;
     private String contractNo;
@@ -30,6 +33,22 @@ public class Contract {
     private String createBy;
     private String createDept;
     private Date createTime;
+
+    public int getProductNum() {
+        return productNum;
+    }
+
+    public void setProductNum(int productNum) {
+        this.productNum = productNum;
+    }
+
+    public int getExtNum() {
+        return extNum;
+    }
+
+    public void setExtNum(int extNum) {
+        this.extNum = extNum;
+    }
 
     public String getInputBy() {
         return inputBy;
