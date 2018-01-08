@@ -19,8 +19,6 @@
         <!-- 打开对AspectJ注解的支持-->
         <aop:aspectj-autoproxy proxy-target-class="true" />
         <!--扫描exception包-->
-
-
         <!--自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
         提供一系列:数据绑定,数字和日期的Format,@NumberFormat,@DateTimeFormat,xml,json 默认支持读写-->
         <mvc:annotation-driven/>
@@ -32,6 +30,4 @@
             <property name="prefix" value="/WEB-INF/pages/"/>
             <property name="suffix" value=""/>
         </bean>
-
-
 </beans>

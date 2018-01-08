@@ -6,7 +6,7 @@
 </head>
 <body>
 <form method="post">
-	<input type="hidden" name="id" value="${obj.factoryID}"/>
+	<input type="hidden" name="id" value="${obj.factoryId}"/>
 
 <div id="menubar">
 <div id="middleMenubar">

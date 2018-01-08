@@ -46,7 +46,7 @@
 	            	<select name="factoryId" onchange="setFactoryName(this.options[this.selectedIndex].text);">
 		            	<option value="">--请选择--</option>
 	            		<c:forEach items="${factoryList}" var="f">
-	            			<option value="${f.id}">${f.factoryName}</option>
+	            			<option value="${f.factoryId}">${f.factoryName}</option>
 	            		</c:forEach>
 	            	</select>
 	            	<input type="hidden" id="factoryName" name="factoryName" value=""/>
@@ -60,7 +60,7 @@
 	            	<select name="ctype">
 		            	<option value="">--请选择--</option>
 	            		<c:forEach items="${ctypeList}" var="cl">
-	            			<option value="${cl.orderNo}">${cl.name}</option>
+	            			<option value="${cl.sysCodeId}">${cl.name}</option>
 	            		</c:forEach>
 	            	</select>
 	            </td>
@@ -119,7 +119,7 @@
 	
 	<c:forEach items="${dataList}" var="o" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
-		<td><input type="checkbox" name="id" value="${o.id}"/></td>
+		<td><input type="checkbox" name="id" value="${o.extCproductId}"/></td>
 		<td>${status.index+1}</td>
 		<td>${o.factoryName}</td>
 		<td>${o.productNo}</td>
@@ -128,8 +128,8 @@
 		<td>${o.price}</td>
 		<td>${o.amount}</td>
 		<td>
-			<a href="toupdate.action?id=${o.id}">[修改]</a>
-			<a href="deleteById.action?id=${o.id}&contractProductId=${o.contractProductId}">[删除]</a>
+			<a href="toupdate.action?id=${o.extCproductId}">[修改]</a>
+			<a href="deleteById.action?id=${o.extCproductId}&contractProductId=${o.contractProductId}">[删除]</a>
 		</td>
 	</tr>
 	</c:forEach>

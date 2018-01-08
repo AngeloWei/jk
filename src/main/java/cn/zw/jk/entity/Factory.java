@@ -3,7 +3,7 @@ package cn.zw.jk.entity;
 import java.util.Date;
 
 public class Factory {
-    private int factoryID;
+    private int factoryId;
     private String fullName;
     private String factoryName;
     private String contacts;
@@ -21,7 +21,7 @@ public class Factory {
     @Override
     public String toString() {
         return "Factory{" +
-                "factoryID=" + factoryID +
+                "factoryID=" + factoryId +
                 ", fullName='" + fullName + '\'' +
                 ", factoryName='" + factoryName + '\'' +
                 ", contacts='" + contacts + '\'' +
@@ -38,12 +38,12 @@ public class Factory {
                 '}';
     }
 
-    public int getFactoryID() {
-        return factoryID;
+    public int getFactoryId() {
+        return factoryId;
     }
 
-    public void setFactoryID(int factoryID) {
-        this.factoryID = factoryID;
+    public void setFactoryId(int factoryID) {
+        this.factoryId = factoryID;
     }
 
     public String getFullName() {

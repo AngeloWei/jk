@@ -57,9 +57,9 @@
 	
 	<c:forEach items="${dataList}" var="o" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
-		<td><input type="checkbox" name="id" value="${o.factoryID}"/></td>
+		<td><input type="checkbox" name="id" value="${o.factoryId}"/></td>
 		<td>${status.index+1}</td>
-		<td><a href="toview.action?id=${o.factoryID}">${o.fullName}</a></td>
+		<td><a href="toview.action?id=${o.factoryId}">${o.fullName}</a></td>
 		<td>${o.factoryName}</td>
 		<td>${o.contacts}</td>
 		<td>${o.phone}</td>
@@ -67,8 +67,8 @@
 		<td>${o.fax}</td>
 		<td>${o.inspector}</td>
 		<td>
-			<c:if test="${o.state==1}"><a href="stop.action?id=${o.factoryID}"><font color="green">启用</font></a></c:if>
-			<c:if test="${o.state==0}"><a href="start.action?id=${o.factoryID}">停用</a></c:if>
+			<c:if test="${o.state==1}"><a href="stop.action?id=${o.factoryId}"><font color="green">启用</font></a></c:if>
+			<c:if test="${o.state==0}"><a href="start.action?id=${o.factoryId}">停用</a></c:if>
 		</td>
 	</tr>
 	</c:forEach>

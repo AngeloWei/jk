@@ -15,4 +15,5 @@ public interface ContractProductService {
     ContractProduct get(Serializable id);
     void  update(ContractProduct contractProduct);
     //void  updateState(Map map);
+    void  deleteByContarctId(Serializable[] ids);
 }

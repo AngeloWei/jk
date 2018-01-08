@@ -73,7 +73,13 @@
         delete from contract_product_c
         where contract_product_id=#{id}
     </delete>
-
+    <delete id="deleteByContractId" parameterType="string">
+        delete from contract_product_c
+        where CONTRACT_ID IN
+        <foreach collection="array" close=")" open="(" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
     <!-- 删除多条（一维字符串数组） -->
     <delete id="delete" parameterType="string">
         delete from contract_product_c

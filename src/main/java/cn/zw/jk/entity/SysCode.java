@@ -12,7 +12,7 @@ public class SysCode {
         this.sysCodeId = sysCodeId;
     }
 
-    public String getName() {
+    public String getName() {   
         return name;
     }
 

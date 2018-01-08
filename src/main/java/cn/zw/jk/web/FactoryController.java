@@ -36,7 +36,7 @@ public class FactoryController {
      */
     @RequestMapping(value = "/basicinfo/factory/update.action",method = RequestMethod.POST)
     public String updateFactoryInfo(int id,Factory factory){
-            factory.setFactoryID(id);
+            factory.setFactoryId(id);
             factoryService.update(factory);
         return "redirect:/basicinfo/factory/list.action";
     }

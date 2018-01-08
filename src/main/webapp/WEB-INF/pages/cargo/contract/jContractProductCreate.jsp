@@ -46,7 +46,7 @@
 	            	<select name="factoryId" onchange="setFactoryName(this.options[this.selectedIndex].text);">
 		            	<option value="">--请选择--</option>
 	            		<c:forEach items="${factoryList}" var="f">
-	            			<option value="${f.factoryID}">${f.factoryName}</option>
+	            			<option value="${f.factoryId}">${f.factoryName}</option>
 	            		</c:forEach>
 	            	</select>
 	            	<input type="hidden" id="factoryName" name="factoryName" value=""/>

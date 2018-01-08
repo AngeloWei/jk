@@ -5,7 +5,15 @@
 
     <!-- 查询合同-->
     <select id="find" resultType="Contract" parameterType="map">
-        SELECT * FROM contract_c WHERE 1=1;
+        SELECT
+        (SELECT COUNT(*) FROM contract_product_c WHERE contract_id = c.contract_id)AS productNum,
+
+        (SELECT COUNT(*) FROM ext_cproduct_c WHERE contract_product_id IN ( SELECT CONTRACT_PRODUCT_ID FROM contract_product_c WHERE CONTRACT_ID = c.contract_id))AS extnum,
+        (
+        (SELECT SUM(AMOUNT) FROM contract_product_c WHERE contract_id = c.contract_id) +
+        (SELECT SUM(AMOUNT) FROM ext_cproduct_c WHERE contract_product_id IN ( SELECT CONTRACT_PRODUCT_ID FROM contract_product_c WHERE CONTRACT_ID = c.contract_id))
+        ) as totalAmount ,c.CONTRACT_ID,c.OFFEROR,c.CONTRACT_NO,c.SIGNING_DATE,c.INPUT_BY,c.CHECK_BY,c.INSPECTOR,c.IMPORT_NUM,c.CREQUEST,c.CUSTOM_NAME,c.DELIVERY_PERIOD,c.SHIP_TIME,c.TRADE_TERMS,c.REMARK,c.PRINT_STYLE,c.OLD_STATE,c.STATE,c.OUT_STATE
+        FROM contract_c c WHERE 1=1 <if test="state!= null" >state=#{state}</if>
     </select>
 
     <select id="get" resultType="Contract" >

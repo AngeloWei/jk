@@ -27,16 +27,16 @@
 </div>
 </div>
 </div>
-   
+
 <div class="textbox" id="centerTextbox">
   <div class="textbox-header">
   <div class="textbox-inner-header">
   <div class="textbox-title">
     购销合同列表
-  </div> 
   </div>
   </div>
-  
+  </div>
+
 <div>
 
 <div class="eXtremeTable" >
@@ -60,16 +60,14 @@
 	</tr>
 	</thead>
 	<tbody class="tableBody" >
-	
+
 	<c:forEach items="${dataList}" var="o" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
 		<td><input type="checkbox" name="id" value="${o.contractId}"/></td>
 		<td>${status.index+1}</td>
 		<td>${o.customName}</td>
 		<td><a href="toview.action?id=${o.contractId}">${o.contractNo}</a></td>
-
-		<td align="center">0</td>
-
+		<td align="center">${o.productNum}/${o.extNum}</td>
 		<td>${o.inputBy}</td>
 		<td>${o.checkBy}</td>
 		<td>${o.inspector}</td>
@@ -84,14 +82,14 @@
 		<td><a href="${ctx}/cargo/contractproduct/tocreate.action?contractId=${o.contractId}" title="新增货物信息">[货物]</a></td>
 	</tr>
 	</c:forEach>
-	
+
 	</tbody>
 </table>
 </div>
- 
+
 </div>
- 
- 
+
+
 </form>
 </body>
 </html>
