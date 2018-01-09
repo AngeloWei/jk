@@ -31,7 +31,7 @@
             <property name="configLocation" value="classpath:mybatis-config.xml"/>
 
             <!--config alise of entity-->
-            <property name="typeAliasesPackage" value="cn.zw.jk.entity"/>
+            <property name="typeAliasesPackage" value="cn.zw.jk.entity,cn.zw.jk.VOEntity"/>
             <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         </bean>
         <!--config Dao interface-->

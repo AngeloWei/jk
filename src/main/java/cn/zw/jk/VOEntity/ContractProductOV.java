@@ -1,11 +1,18 @@
-package cn.zw.jk.entity;
+package cn.zw.jk.VOEntity;
 
-public class ContractProduct {
+import cn.zw.jk.entity.Contract;
+import cn.zw.jk.entity.ContractProduct;
+import cn.zw.jk.entity.ExtCProduct;
+import cn.zw.jk.entity.Factory;
+
+import java.util.List;
+
+public class ContractProductOV {
     private String contractProductId;
     //private Contract contract;		//将复杂的关联关系变成单表操作
-    private String contractId;			//关联关系的表（外键），都成为普通字段
-    private String factoryId;
-
+    private ContractProduct contractProduct;			//关联关系的表（外键），都成为普通字段
+    private Factory factory;
+    private List<ExtCProduct> extCProducts; //附件list
     private String factoryName;
     private String productNo;
     private String productImage;
@@ -21,28 +28,37 @@ public class ContractProduct {
     private String exts;
     private Integer orderNo;
 
+
+    public ContractProduct getContractProduct() {
+        return contractProduct;
+    }
+
+    public void setContractProduct(ContractProduct contractProduct) {
+        this.contractProduct = contractProduct;
+    }
+
+    public List<ExtCProduct> getExtCProducts() {
+        return extCProducts;
+    }
+
+    public void setExtCProducts(List<ExtCProduct> extCProducts) {
+        this.extCProducts = extCProducts;
+    }
+
+    public Factory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(Factory factory) {
+        this.factory = factory;
+    }
+
     public String getContractProductId() {
         return contractProductId;
     }
 
     public void setContractProductId(String contractProductId) {
         this.contractProductId = contractProductId;
-    }
-
-    public String getContractId() {
-        return contractId;
-    }
-
-    public void setContractId(String contractId) {
-        this.contractId = contractId;
-    }
-
-    public String getFactoryId() {
-        return factoryId;
-    }
-
-    public void setFactoryId(String factoryId) {
-        this.factoryId = factoryId;
     }
 
     public void setFactoryName(String factoryName) {
