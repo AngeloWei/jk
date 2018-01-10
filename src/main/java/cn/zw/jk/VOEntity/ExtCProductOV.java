@@ -16,7 +16,7 @@ public class ExtCProductOV {
 	private String ctype;
 	private String productNo;
 	private String productImage;
-	private String productDesc;
+	private String  productDesc;
 	private Integer cnumber;
 	private String packingUnit;			//包装单位
 	private Double price;

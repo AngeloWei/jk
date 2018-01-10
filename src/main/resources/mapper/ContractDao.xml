@@ -2,11 +2,15 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zw.jk.dao.ContractDao">
-    
-    <resultMap id="contractOV" type="contractOV" >
-        <id property="contractId" column="contract_id" />
 
-    </resultMap>
+    <!-- 查询ContractOV，自动装载productList-->
+    <select id="view" resultType="ContractOV" >
+        SELECT c.CONTRACT_ID, OFFEROR, CONTRACT_NO, SIGNING_DATE, INPUT_BY, CHECK_BY, INSPECTOR, TOTAL_AMOUNT,
+            CREQUEST, CUSTOM_NAME, SHIP_TIME, IMPORT_NUM, DELIVERY_PERIOD, REMARK, PRINT_STYLE, OLD_STATE,
+            STATE, OUT_STATE, TRADE_TERMS, CREATE_TIME,CONTRACT_PRODUCT_ID,FACTORY_ID,FACTORY_NAME,PRODUCT_NO
+        FROM contract_c c,contract_product_c p
+        WHERE c.CONTRACT_ID=p.CONTRACT_ID;
+    </select>
 
     <!-- 查询合同-->
     <select id="find" resultType="Contract" parameterType="map">
@@ -80,6 +84,7 @@
           </set>
         where CONTRACT_ID = #{contractId}
     </update>
+
 
         
 

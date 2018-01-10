@@ -1,5 +1,6 @@
 package cn.zw.jk.service.impl;
 
+import cn.zw.jk.VOEntity.ContractOV;
 import cn.zw.jk.dao.ContractDao;
 import cn.zw.jk.dao.ContractProductDao;
 import cn.zw.jk.dao.ExtCProductDao;
@@ -49,6 +50,10 @@ public class ContractServiceImpl implements ContractService {
 
     public Contract get(Serializable id) {
         return contractDao.get(id);
+    }
+
+    public ContractOV view() {
+        return contractDao.view();
     }
 
     public void update(Contract contract) {
