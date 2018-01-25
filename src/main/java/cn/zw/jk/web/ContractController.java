@@ -1,5 +1,6 @@
 package cn.zw.jk.web;
 
+import cn.zw.jk.VOEntity.ContractOV;
 import cn.zw.jk.entity.Contract;
 import cn.zw.jk.service.ContractService;
 import org.springframework.stereotype.Controller;
@@ -50,8 +51,8 @@ public class ContractController {
     //合同详情查看
     @RequestMapping("/cargo/contract/toview.action")
     public String viewContract(String id ,Model model){
-        Contract contract = contractService.get(id);
-        model.addAttribute("obj",contract);
+        ContractOV contractOV = contractService.view(id);
+        model.addAttribute("obj",contractOV);
         return "/cargo/contract/jContractView.jsp";
     }
 }

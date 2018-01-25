@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zw.jk.dao.ContractProductDao">
+
+    <!-- 查询某个合同下的货物信息 -->
+
+    <select id="find" parameterType="map" resultType="ExportProduct">
+        select
+        EXPORT_PRODUCT_ID,
+        EXPORT_ID,
+        FACTORY_ID,
+        FACTORY_NAME,
+        PRODUCT_NO,
+        PACKING_UNIT,
+        Cfloat,
+        BOX_NUM,
+        GROSS_WEIGHT,
+        NET_WEIGHT,
+        SIZE_LENGTH,
+        SIZE_WIDTH,
+        SIZE_HEIGHT,
+        EX_PRICE,
+        PRICE,
+        TAX,
+        ORDER_NO
+        from export_product_c
+        where 1=1
+        <if test="exportId != null"> and EXPORT_ID=#{exportId}</if>
+    </select>
+
+    <select id="get" parameterType="string" resultType="ExportProduct">
+        select
+            EXPORT_PRODUCT_ID,
+            EXPORT_ID,
+            FACTORY_ID,
+            FACTORY_NAME,
+            PRODUCT_NO,
+            PACKING_UNIT,
+            Cfloat,
+            BOX_NUM,
+            GROSS_WEIGHT,
+            NET_WEIGHT,
+            SIZE_LENGTH,
+            SIZE_WIDTH,
+            SIZE_HEIGHT,
+            EX_PRICE,
+            PRICE,
+            TAX,
+            ORDER_NO
+        from export_product_c
+        where export_product_id=#{id}
+    </select>
+
+    <insert id="insert" parameterType="ExportProduct">
+        insert into export_product_c
+        (
+            EXPORT_PRODUCT_ID,
+            EXPORT_ID,
+            FACTORY_ID,
+            FACTORY_NAME,
+            PRODUCT_NO,
+            PACKING_UNIT,
+            BOX_NUM,
+            GROSS_WEIGHT,
+            NET_WEIGHT,
+            SIZE_LENGTH,
+            SIZE_WIDTH,
+            SIZE_HEIGHT,
+            EX_PRICE,
+            PRICE,
+            TAX,
+            ORDER_NO
+        )
+        values(
+        #{exportProductId},
+        #{exportId},
+        #{factoryId},
+        #{factoryName, jdbcType=VARCHAR},
+        #{productNo, jdbcType=VARCHAR},
+        #{packingUnit, jdbcType=VARCHAR},
+        #{boxNum, jdbcType=VARCHAR},
+        #{grossWeight, jdbcType=INTEGER},
+        #{netWeight, jdbcType=INTEGER},
+        #{sizeLength, jdbcType=VARCHAR},
+        #{sizeWidth, jdbcType=DOUBLE},
+        #{sizeHeight, jdbcType=DOUBLE},
+        #{exPrice, jdbcType=INTEGER},
+        #{price, jdbcType=INTEGER},
+        #{tax, jdbcType=INTEGER},
+        #{orderNo, jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="update" parameterType="ExportProduct">
+        update export_product_c
+        <set>
+            EXPORT_ID=#{exportId},
+            FACTORY_ID=#{factoryId},
+            <if test="factoryName != null">FACTORY_NAME=#{factoryName},</if>
+            <if test="productNo != null">PRODUCT_NO=#{productNo},</if>
+            <if test="packingUnit != null">PACKING_UNIT=#{packingUnit},</if>
+            <if test="boxNum != null">BOX_NUM=#{boxNum},</if>
+            <if test="netWeight != null">NET_WEIGHT=#{netWeight},</if>
+            <if test="sizeLength != null">SIZE_LENGTH=#{sizeLength},</if>
+            <if test="sizeWidth != null">SIZE_WIDTH=#{sizeWidth},</if>
+            <if test="sizeHeight != null">SIZE_HEIGHT=#{sizeHeight},</if>
+            <if test="exPrice != null">EX_PRICE=#{exPrice},</if>
+            <if test="price != null">PRICE=#{price},</if>
+            <if test="tax != null">TAX=#{tax},</if>
+            <if test="orderNo != null">ORDER_NO=#{orderNo},</if>
+        </set>
+        where export_product_id=#{id}
+    </update>
+
+
+    <!-- 删除一条 -->
+    <delete id="deleteById" parameterType="string">
+        delete from export_product_c
+        where export_product_id=#{id}
+    </delete>
+    <delete id="deleteByExportId" parameterType="string">
+        delete from export_product_c
+        where EXPORT_ID IN
+        <foreach collection="array" close=")" open="(" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+    <!-- 删除多条（一维字符串数组） -->
+    <delete id="delete" parameterType="string">
+        delete from export_product_c
+        where export_product_id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

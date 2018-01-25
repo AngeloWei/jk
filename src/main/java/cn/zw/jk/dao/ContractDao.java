@@ -8,5 +8,5 @@ import java.util.Map;
 
 public interface ContractDao extends BaseDao<Contract>{
     void updateState(Map map);
-    ContractOV view();
+    ContractOV view(String id);
 }

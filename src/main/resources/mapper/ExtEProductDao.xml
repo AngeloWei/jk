@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zw.jk.dao.ExtEProductDao">
+
+
+    <!-- 查询某个合同下的货物信息 -->
+
+    <select id="find" parameterType="map" resultType="ExtEProduct">
+        select EXPORT_PRODUCT_ID,EXT_EPRODUCT_ID,FACTORY_ID,FACTORY_NAME,PRODUCT_NO,
+        PRODUCT_IMAGE,PRODUCT_DESC,PACKING_UNIT,PRICE,AMOUNT,ORDER_NO from ext_eproduct_c
+        where 1=1
+        <if test="contractProductId != null"> and EXPORT_PRODUCT_ID=#{id}</if>
+    </select>
+
+    <select id="get" parameterType="string" resultType="ExtEProduct">
+        select EXPORT_PRODUCT_ID,EXT_EPRODUCT_ID,FACTORY_ID,FACTORY_NAME,PRODUCT_NO,
+            PRODUCT_IMAGE,PRODUCT_DESC,PACKING_UNIT,PRICE,AMOUNT,ORDER_NO from ext_eproduct_c
+        where EXT_EPRODUCT_ID=#{id}
+    </select>
+
+    <insert id="insert" parameterType="ExtEProduct">
+        insert into ext_eproduct_c
+        (EXPORT_PRODUCT_ID,EXT_EPRODUCT_ID,FACTORY_ID,FACTORY_NAME,PRODUCT_NO,
+         PRODUCT_IMAGE,PRODUCT_DESC,PACKING_UNIT,PRICE,AMOUNT,ORDER_NO,CTYPE,PRODUCT_REQUEST)
+        values(
+        #{exportProductId},
+        #{extEProductId},
+        #{factoryId},
+        #{factoryName, jdbcType=VARCHAR},
+        #{productNo, jdbcType=VARCHAR},
+        #{productImage, jdbcType=VARCHAR},
+        #{productDesc, jdbcType=VARCHAR},
+        #{packingUnit, jdbcType=VARCHAR},
+        #{price, jdbcType=DOUBLE},
+        #{amount, jdbcType=DOUBLE},
+        #{orderNo, jdbcType=INTEGER},
+        #{ctype, jdbcType=INTEGER},
+        #{productRequest, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="update" parameterType="ExtEProduct">
+        update ext_eproduct_c
+        <set>
+            EXPORT_PRODUCT_ID=#{contractProductId},
+            FACTORY_ID=#{factoryId},
+            <if test="factoryName != null">FACTORY_NAME=#{factoryName},</if>
+            <if test="productNo != null">PRODUCT_NO=#{productNo},</if>
+            <if test="productImage != null">PRODUCT_IMAGE=#{productImage},</if>
+            <if test="productDesc != null">PRODUCT_DESC=#{productDesc},</if>
+            <if test="cnumber != null">CNUMBER=#{cnumber},</if>
+            <if test="packingUnit != null">PACKING_UNIT=#{packingUnit},</if>
+            <if test="price != null">PRICE=#{price},</if>
+            <if test="amount != null">AMOUNT=#{amount},</if>
+            <if test="orderNo != null">ORDER_NO=#{orderNo},</if>
+        </set>
+        WHERE EXT_EPRODUCT_ID=#{id}
+    </update>
+
+
+    <!-- 删除一条 -->
+    <delete id="deleteById" parameterType="string">
+        delete from ext_eproduct_c
+        where EXT_EPRODUCT_ID=#{id}
+    </delete>
+    <delete id="deleteByExportProductId" parameterType="string">
+        delete from ext_eproduct_c
+        where EXPORT_PRODUCT_ID=#{id}
+    </delete>
+
+    <!-- 删除多条（一维字符串数组） -->
+    <delete id="delete" parameterType="string">
+        delete from ext_eproduct_c
+        where EXT_EPRODUCT_ID in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteByExportId" parameterType="string">
+        delete from ext_eproduct_c
+        where EXPORT_PRODUCT_ID in
+        (
+        select EXPORT_PRODUCT_ID from export_product_c WHERE EXPORT_ID IN
+
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
+</mapper>

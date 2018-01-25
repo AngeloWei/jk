@@ -52,8 +52,8 @@ public class ContractServiceImpl implements ContractService {
         return contractDao.get(id);
     }
 
-    public ContractOV view() {
-        return contractDao.view();
+    public ContractOV view(String id) {
+        return contractDao.view(id);
     }
 
     public void update(Contract contract) {

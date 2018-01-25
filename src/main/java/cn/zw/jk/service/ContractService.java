@@ -15,7 +15,7 @@ public interface ContractService {
     void deleteById(Serializable id);
     void delete(Serializable[] ids);
     Contract get(Serializable id);
-    ContractOV view();
+    ContractOV view(String id);
 
     void  update(Contract contract);
     void  updateState(Map map);
