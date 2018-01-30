@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.zw.jk.dao.ContractProductDao">
+<mapper namespace="cn.zw.jk.dao.ExportProductDao">
 
     <!-- 查询某个合同下的货物信息 -->
 
@@ -110,7 +110,7 @@
             <if test="tax != null">TAX=#{tax},</if>
             <if test="orderNo != null">ORDER_NO=#{orderNo},</if>
         </set>
-        where export_product_id=#{id}
+        where export_product_id=#{exportProductId} and export_id=#{exportId}
     </update>
 
 

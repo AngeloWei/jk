@@ -104,9 +104,6 @@
     <update id="update" parameterType="Export">
         update export_c
         <set>
-            EXPORT_ID=#{exportId},
-            <if test="contractIds != null">CONTRACT_IDS=#{contractIds},</if>
-            <if test="customerContract != null">CUSTOMER_CONTRACT=#{customerContract},</if>
             <if test="lcno != null">LCNO=#{lcno},</if>
             <if test="consignee != null">CONSIGNEE=#{consignee},</if>
             <if test="marks != null">MARKS=#{marks},</if>
@@ -115,7 +112,6 @@
             <if test="destinationPort != null">DESTINATION_PORT=#{destinationPort},</if>
             <if test="transportMode != null">TRANSPORT_MODE=#{transportMode},</if>
             <if test="priceCondition != null">PRICE_CONDITION=#{priceCondition},</if>
-            <if test="state != null">STATE=#{state},</if>
             <if test="grossWeight != null">GROSS_WEIGHT=#{grossWeight},</if>
             <if test="netWeight != null">NET_WEIGHT=#{netWeight},</if>
             <if test="measurement != null">MEASUREMENT=#{measurement},</if>

@@ -12,7 +12,7 @@ public class ContractProductOV {
     //private Contract contract;		//将复杂的关联关系变成单表操作
     private ContractProduct contractProduct;			//关联关系的表（外键），都成为普通字段
     private Factory factory;
-    private List<ExtCProduct> extCProducts; //附件list
+    private List<ExtCProductOV> extCProducts; //附件list
     private String factoryName;
     private String productNo;
     private String productImage;
@@ -22,8 +22,8 @@ public class ContractProductOV {
     private String loadingRate;			//装率
     private Integer boxNum;				//箱数
     private String packingUnit;			//包装单位
-    private Double price;
-    private Double amount;
+    private Float price;
+    private Float amount;
     private Integer finished;
     private String exts;
     private Integer orderNo;
@@ -37,11 +37,11 @@ public class ContractProductOV {
         this.contractProduct = contractProduct;
     }
 
-    public List<ExtCProduct> getExtCProducts() {
+    public List<ExtCProductOV> getExtCProducts() {
         return extCProducts;
     }
 
-    public void setExtCProducts(List<ExtCProduct> extCProducts) {
+    public void setExtCProducts(List<ExtCProductOV> extCProducts) {
         this.extCProducts = extCProducts;
     }
 
@@ -133,19 +133,19 @@ public class ContractProductOV {
         this.packingUnit = packingUnit;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public Double getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 

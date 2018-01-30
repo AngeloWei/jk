@@ -11,10 +11,10 @@ public class ExtEProduct {
     private String productDesc;
     private int cfloat;
     private String packingUnit;
-    private float price;
-    private float amount;
+    private Double price;
+    private Double amount;
     private String productRequest;
-    private int orderNo;
+    private Integer orderNo;
 
     public String getExtEProductId() {
         return extEProductId;
@@ -96,19 +96,19 @@ public class ExtEProduct {
         this.packingUnit = packingUnit;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -120,11 +120,11 @@ public class ExtEProduct {
         this.productRequest = productRequest;
     }
 
-    public int getOrderNo() {
+    public Integer getOrderNo() {
         return orderNo;
     }
 
-    public void setOrderNo(int orderNo) {
+    public void setOrderNo(Integer orderNo) {
         this.orderNo = orderNo;
     }
 }

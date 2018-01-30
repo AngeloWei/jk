@@ -1,11 +1,15 @@
 package cn.zw.jk.entity;
 
+import javafx.scene.control.cell.PropertyValueFactory;
+
 import java.util.Date;
+import java.util.List;
 
 public class Export {
     private String exportId;
     private Date inputDate;
     private String contractIds;
+    private List<ExportProduct> exportProductList ;
     private String customerContract;
     private String lcno;
     private String consignee;
@@ -22,6 +26,14 @@ public class Export {
     private String createBy;
     private String createDept;
     private Date createTime;
+
+    public List<ExportProduct> getExportProductList() {
+        return exportProductList;
+    }
+
+    public void setExportProductList(List<ExportProduct> exportProductList) {
+        this.exportProductList = exportProductList;
+    }
 
     public String getExportId() {
         return exportId;

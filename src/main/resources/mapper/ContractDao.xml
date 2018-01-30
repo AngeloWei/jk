@@ -55,15 +55,15 @@
             <collection property="extCProducts" ofType="ExtCProductOV" >
                 <id property="extCproductId" column="EXT_CPRODUCT_ID"/>
                 <result property="ctype" column="CTYPE"/>
-                <result property="productNo" column="EXT_PRODUCT_NO"/>
-                <result property="productImage" column="EXT_PRODUCT_IMAGE"/>
-                <result property="productDesc" column="EXT_PRODUCT_DESC"/>
-                <result property="cnumber" column="EXT_CNUMBER"/>
-                <result property="packingUnit" column="EXT_PACKING_UNIT"/>
-                <result property="price" column="EXT_PRICE"/>
-                <result property="amount" column="EXT_AMOUNT"/>
+                <result property="productNo" column="extPRODUCT_NO"/>
+                <result property="productImage" column="extPRODUCT_IMAGE"/>
+                <result property="productDesc" column="extPRODUCT_DESC"/>
+                <result property="cnumber" column="extCNUMBER"/>
+                <result property="packingUnit" column="extPACKING_UNIT"/>
+                <result property="price" column="extPRICE"/>
+                <result property="amount" column="extAMOUNT"/>
                 <result property="productRequest" column="PRODUCT_REQUEST"/>
-                <result property="orderNo" column="EXT_ORDER_NO"/>
+                <result property="orderNo" column="extORDER_NO"/>
                 <association property="factory" javaType="Factory" >
                     <id property="factoryId" column="extFactory_ID" />
                     <result property="fullName" column="extFULL_NAME"/>
@@ -98,6 +98,19 @@
             CREATE_BY,
             CREATE_DEPT,
             CREATE_TIME,
+            p.CONTRACT_PRODUCT_ID,
+            p.PRODUCT_NO,
+            p.PRODUCT_IMAGE,
+            p.PRODUCT_DESC,
+            p.CNUMBER,
+            p.PACKING_UNIT,
+            p.PRICE,
+            p.AMOUNT,
+            p.ORDER_NO,
+            p.FACTORY_ID,
+            p.Full_Name,
+            p.FACTORY_NAME,
+            p.Contacts,
             p.EXT_CPRODUCT_ID,
             p.extPRODUCT_NO,
             p.extPRODUCT_IMAGE,
@@ -128,18 +141,18 @@
                            p.FACTORY_NAME,
                            p.Contacts,
                            ext.EXT_CPRODUCT_ID,
-                           ext.PRODUCT_NO        AS extPRODUCT_NO,
-                           ext.PRODUCT_IMAGE     AS extPRODUCT_IMAGE,
-                           ext.PRODUCT_DESC      AS extPRODUCT_DESC,
-                           ext.CNUMBER           AS extCNUMBER,
-                           ext.PACKING_UNIT      AS extPACKING_UNIT,
-                           ext.PRICE             AS extPRICE,
-                           ext.AMOUNT            AS extAMOUNT,
-                           ext.ORDER_NO          AS extORDER_NO,
-                           ext.FACTORY_ID        AS extFACTORY_ID,
-                           ext.Full_Name         AS extFull_Name,
-                           ext.FACTORY_NAME      AS extFACTORY_NAME,
-                           ext.Contacts          AS extContacts
+                           ext.PRODUCT_NO         AS extPRODUCT_NO,
+                           ext.PRODUCT_IMAGE      AS extPRODUCT_IMAGE,
+                           ext.PRODUCT_DESC       AS extPRODUCT_DESC,
+                           ext.CNUMBER            AS extCNUMBER,
+                           ext.PACKING_UNIT       AS extPACKING_UNIT,
+                           ext.PRICE              AS extPRICE,
+                           ext.AMOUNT             AS extAMOUNT,
+                           ext.ORDER_NO           AS extORDER_NO,
+                           ext.FACTORY_ID         AS extFACTORY_ID,
+                           ext.Full_Name          AS extFull_Name,
+                           ext.FACTORY_NAME       AS extFACTORY_NAME,
+                           ext.Contacts           AS extContacts
                        FROM (SELECT
                                  contract_id,
                                  CONTRACT_PRODUCT_ID,
@@ -178,7 +191,7 @@
                                       WHERE f.FACTORY_ID = ext.FACTORY_ID) ext
                                ON ext.CONTRACT_PRODUCT_ID = p.CONTRACT_PRODUCT_ID) p
                 ON p.contract_id = c.contract_id
-               where c.CONTRACT_ID=#{id}
+                WHERE  c.CONTRACT_ID=#{id}
     </select>
 
     <!-- 查询合同-->
